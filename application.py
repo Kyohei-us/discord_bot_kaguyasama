@@ -10,6 +10,8 @@ from discord.ext.commands import Bot
 
 from test_python_scrape import ImageScraper
 
+import time
+
 load_dotenv()
 bot_token = os.getenv('BOT_TOKEN')
 
