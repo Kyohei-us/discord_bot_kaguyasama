@@ -7,6 +7,8 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import chromedriver_binary
 
+os.chmod(r"/usr/local/lib/python3.6/dist-packages/chromedriver_binary/__init__.py", 0755)
+
 class ImageScraper:
     def __init__(self):
         self.name = "a"
