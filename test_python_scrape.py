@@ -37,7 +37,7 @@ class ImageScraper:
         options.headless = True
 
         # ブラウザを起動する
-        driver = webdriver.Chrome(options=options)
+        driver = webdriver.Chrome(options=options, excutable_path="/usr/local/lib/python3.6/dist-packages/chromedriver_binary/__init__.py")
 
         # ブラウザでアクセスする
         driver.get("https://www.google.com/search?q=" + image + "&tbm=isch")
