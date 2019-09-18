@@ -28,12 +28,16 @@ async def on_ready():
 #     await bot.send_message(channel, message)
 
 
+# your code
+elapsed_time = time.time() - start_time
+
 @bot.event
 async def on_message(message):
     if message.content.startswith('$greet'):
         channel = message.channel
         await channel.send('Say hello! ' +  message.author.name)
     if message.content.startswith('$scrape'):
+        start_time = time.time()
         channel = message.channel
         print("received command")
         await channel.send("I received scraping command")
@@ -57,8 +61,9 @@ async def on_message(message):
         for i in image_list:
             await channel.send(i)
 
+        elapsed_time = time.time() - start_time
         print("scraping images is done!")
-        await channel.send("I finished scraping images!!")
+        await channel.send("I finished scraping images!! It took {} seconds.".format(elapsed_time))
 
 
 
