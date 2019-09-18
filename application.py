@@ -63,7 +63,7 @@ async def on_message(message):
 
         elapsed_time = time.time() - start_time
         print("scraping images is done!")
-        await channel.send("I finished scraping images!! It took {} seconds.".format(elapsed_time))
+        await channel.send("I finished scraping images!! It took {:2f} seconds.".format(elapsed_time))
 
 
 
