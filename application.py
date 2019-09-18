@@ -27,6 +27,7 @@ async def on_ready():
 #     global target_channel
 #     await bot.send_message(channel, message)
 
+
 @bot.event
 async def on_message(message):
     if message.content.startswith('$greet'):
@@ -53,9 +54,9 @@ async def on_message(message):
         await channel.send("Pls be patient. I'm giving you out the images!")
         #await asyncio.sleep(60)
 
-for i in image_list:
-    await channel.send(i)
-        
+        for i in image_list:
+            await channel.send(i)
+
         print("scraping images is done!")
         await channel.send("I finished scraping images!!")
 
