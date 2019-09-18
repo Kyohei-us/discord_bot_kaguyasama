@@ -30,8 +30,6 @@ async def on_ready():
 #     await bot.send_message(channel, message)
 
 
-# your code
-elapsed_time = time.time() - start_time
 
 @bot.event
 async def on_message(message):
