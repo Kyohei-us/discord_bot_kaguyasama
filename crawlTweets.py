@@ -52,20 +52,10 @@ def letscrawl(tweets, keywordFromOutside):
 
 def seeLists(tweets):
 
-    url = "https://api.twitter.com/1.1/lists/statuses.json?slug=main&owner_screen_name=UniversityKenCA&count=20"
+    url = "https://api.twitter.com/1.1/lists/statuses.json?slug=main&owner_screen_name=UniversityKenCA&count=10"
 
     params ={'count' : 5} #取得数
     res = twitter.get(url, params = params)
-
-
-    jsonedres = json.dumps(res)
-    with open('listSaved.json', 'r') as outfile:
-        listSaved = json.load(outfile)
-        if jsonedres == listSaved:
-            return ["There is No Update yet."]
-    with open('listSaved.json', 'w') as outfile:
-        json.dump(jsonedres, outfile)
-
 
     limit = res.headers['x-rate-limit-remaining']
     reset = res.headers['x-rate-limit-reset']
