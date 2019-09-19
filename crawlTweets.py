@@ -35,7 +35,9 @@ def letscrawl(tweets):
         for line in timelines['statuses']: #タイムラインリストをループ処理
             #print(line['text'])
             #print("--------------------------------------")
-            tweets.append(line['user']['name']+':\n:'+line['text'])
+            tweets.append("--------------------------")
+            tweets.append(line['user']['name']+':\n\n'+line['text'])
+            tweets.append("--------------------------")
             #print(line['user']['name']+':\n:'+line['text'])
             #print(line['created_at'])
             #print('*******************************************')
