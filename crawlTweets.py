@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import chromedriver_binary
-import time
+import time, datetime
 
 CONSUMER_KEY = "RP2J9vbernYv0XOjjpm2HST2h"
 CONSUMER_SECRET = "pQvjV4piscKWS0DtyZo6XVQIPyP7XafymvSkV736CmSaXCzgYs"
