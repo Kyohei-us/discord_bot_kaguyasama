@@ -70,7 +70,7 @@ async def on_message(message):
             counter = 0
             while numberForScrapeloop > 0:
                 scraped_image = scraper.sliceImageList(selectSoup, loopingNth)
-                while scraped_image == "#":
+                while scraped_image == "#" or scraped_image.startswith('https://support.google.com/legal/answer/3463239?'):
                     loopingNth = loopingNth + 1
                     scraped_image = scraper.sliceImageList(selectSoup, loopingNth)
                 await channel.send(scraped_image)
