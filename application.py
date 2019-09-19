@@ -61,10 +61,19 @@ async def on_message(message):
         for keyword in range(lengthOfSearchKeyword-1):
             await channel.send("I'm scraping images of {} for {}!".format(searchKeyword[keyword], message.author.name))
             selectSoup = scraper.scrape_images(search_image = searchKeyword[keyword], num_of_images = num_of_images)
-            for i in range(num_of_images):
-                scraped_image = scraper.sliceImageList(selectSoup, i*2)
+            numberForScrapeloop = range(num_of_images)
+            loopingNth = 0
+            while numberForScrapeloop > 0:
+                scraped_image = scraper.sliceImageList(selectSoup, loopingNth)
+                if scraped_image == "#":
+                    loopingInloopingNth = loopingNth
+                    while scraped_image == "#":
+                        loopingInloopingNth = loopingInloopingNth + 1
+                        scraped_image = scraper.sliceImageList(selectSoup, loopingInloopingNth)
                 await channel.send(scraped_image)
-                await channel.send("{} more image(s) are coming right now!".format(num_of_images - i - 1))
+                await channel.send("{} more image(s) are coming right now!".format(num_of_images - i - loopingNth))
+                loopingNth = loopingNth + 1
+                numberForScrapeloop = numberForScrapeloop - 1
             print("image scraped")
 
         #await asyncio.sleep(60)
