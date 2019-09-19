@@ -20,6 +20,7 @@ class ImageScraper:
                 link = selectSoup[nthimage]["src"]
             except Exception as e:
                 print(e)
+
         image_url = "I found empty image. I'm sorry."
 
         if "imgurl" in link:
@@ -60,6 +61,9 @@ class ImageScraper:
 
             driver2.quit()
             #END of if statement in for selectSoup loop
+        else:
+            image_url = link
+            
         return image_url
 
     def scrape_images(self, search_image, num_of_images):
