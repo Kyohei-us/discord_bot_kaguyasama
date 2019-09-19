@@ -50,7 +50,7 @@ def letscrawl(tweets, keywordFromOutside):
 
     return tweets
 
-def seeLists():
+def seeLists(tweets):
 
     url = "https://api.twitter.com/1.1/lists/statuses.json?slug=main&owner_screen_name=UniversityKenCA"
 
@@ -74,3 +74,5 @@ def seeLists():
             #print('*******************************************')
     else: #正常通信出来なかった場合
         print("Failed: %d" % res.status_code)
+
+    return tweets
