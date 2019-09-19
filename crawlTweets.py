@@ -18,8 +18,8 @@ AT = ACCESS_TOKEN
 ATS = ACCESS_TOKEN_SECRET
 twitter = OAuth1Session(CK, CS, AT, ATS) #認証処理
 
-def letscrawl(tweets):
-    keyword = str(input("Type in keyword: "))
+def letscrawl(tweets, keywordFromOutside):
+    keyword = keywordFromOutside
 
     url = "https://api.twitter.com/1.1/search/tweets.json?q=" + keyword + "&result_type=mixed&count=10" #タイムライン取得エンドポイント
 

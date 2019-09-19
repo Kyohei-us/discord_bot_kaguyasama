@@ -35,8 +35,9 @@ async def on_message(message):
 
     if message.content.startswith("$twitter"):
         channel = message.channel
+        message.content = message.content[9:]
         tweets = []
-        tweets = tw.letscrawl(tweets)
+        tweets = tw.letscrawl(tweets, message.content)
         for tweet in tweets:
             await channel.send(tweet)
 
