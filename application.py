@@ -11,6 +11,8 @@ from discord.ext.commands import Bot
 from test_python_scrape import ImageScraper
 import crawlTweets as tw
 
+from bs4 import BeautifulSoup
+
 import time
 
 load_dotenv()
@@ -58,14 +60,14 @@ async def on_message(message):
         num_of_images = int(searchKeyword[lengthOfSearchKeyword-1])
         for keyword in range(lengthOfSearchKeyword-1):
             await channel.send("I'm scraping images of {} for {}!".format(searchKeyword[keyword], message.author.name))
-            image_list = scraper.scrape_images(search_image = searchKeyword[keyword], num_of_images = num_of_images)
+            selectSoup = scraper.scrape_images(search_image = searchKeyword[keyword], num_of_images = num_of_images)
+            for i in range(len(selectSoup)):
+                scraped_image = scraper.sliceImageList(selectSoup, i)
+                await channel.send(scraped_image)
             print("image scraped")
 
-        await channel.send("Pls be patient. I'm giving you out the images!")
         #await asyncio.sleep(60)
 
-        for i in image_list:
-            await channel.send(i)
 
         elapsed_time = time.time() - start_time
         print("scraping images is done!")

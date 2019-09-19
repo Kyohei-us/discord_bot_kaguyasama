@@ -11,6 +11,60 @@ class ImageScraper:
     def __init__(self):
         self.name = "a"
 
+    def sliceImageList(self, selectSoup, nthimage):
+        if nameCounter >= num_of_images:
+            driver.quit()
+            break
+        try:
+            link = selectSoup[nthimage]["href"]
+        except Exception as e:
+            print(e)
+            try:
+                link = selectSoup[nthimage]["src"]
+            except Exception as e:
+                print(e)
+                continue
+
+        if "imgurl" in link:
+
+            print("\nYES\n")
+
+            # ブラウザのオプションを格納する変数をもらってきます。
+            options2 = Options()
+
+            # Headlessモードを有効にする（コメントアウトするとブラウザが実際に立ち上がります）
+            options2.headless = True
+
+            # ブラウザを起動する
+            driver2 = webdriver.Chrome(options=options2, executable_path=r"/usr/local/lib/python3.6/dist-packages/chromedriver_binary/chromedriver")
+
+            # ブラウザでアクセスする
+            driver2.get("https://www.google.com" + link)
+
+            # HTMLを文字コードをUTF-8に変換してから取得します。
+            html2 = driver2.page_source.encode('utf-8')
+
+            soup2 = BeautifulSoup(html2, 'html.parser')
+
+
+            deepimage = soup2.find("meta",  property="og:image")
+            print("The img tag found. The url for the image is :\n")
+            try:
+                deeplink = deepimage["content"]
+            except Exception as e:
+                print(e)
+
+            print(deeplink)
+
+            nameCounter = nameCounter + 1
+            image_url = deeplink
+            #image_name = image + "_" + str(nameCounter)
+            #self.save_image(image_name, image_url)
+
+            driver2.quit()
+            #END of if statement in for selectSoup loop
+        return image_url
+
     def scrape_images(self, search_image, num_of_images):
 
         link = ""
@@ -55,68 +109,14 @@ class ImageScraper:
 
         print("selecting")
         print(image)
-        selectedSoup = soup.select("#search a")
-
-        for img in selectedSoup:
-            if nameCounter >= num_of_images:
-                driver.quit()
-                break
-            try:
-                link = img["href"]
-            except Exception as e:
-                print(e)
-                try:
-                    link = img["src"]
-                except Exception as e:
-                    print(e)
-                    continue
-
-            if "imgurl" in link:
-
-                print("\nYES\n")
-
-                # ブラウザのオプションを格納する変数をもらってきます。
-                options2 = Options()
-
-                # Headlessモードを有効にする（コメントアウトするとブラウザが実際に立ち上がります）
-                options2.headless = True
-
-                # ブラウザを起動する
-                driver2 = webdriver.Chrome(options=options2, executable_path=r"/usr/local/lib/python3.6/dist-packages/chromedriver_binary/chromedriver")
-
-                # ブラウザでアクセスする
-                driver2.get("https://www.google.com" + link)
-
-                # HTMLを文字コードをUTF-8に変換してから取得します。
-                html2 = driver2.page_source.encode('utf-8')
-
-                soup2 = BeautifulSoup(html2, 'html.parser')
+        selectSoup = soup.select("#search a")
 
 
-                deepimage = soup2.find("meta",  property="og:image")
-                print("The img tag found. The url for the image is :\n")
-                try:
-                    deeplink = deepimage["content"]
-                except Exception as e:
-                    print(e)
-
-                print(deeplink)
-
-                nameCounter = nameCounter + 1
-                image_url = deeplink
-                #image_name = image + "_" + str(nameCounter)
-                #self.save_image(image_name, image_url)
-
-                image_list.append(image_url)
-
-                driver2.quit()
-                #END of if statement in for selectSoup loop
-            #END of for selectSoup loop
 
         driver.quit()
         print("driver quit")
 
-        return image_list
+        return selectSoup
 
 
     # def save_image(self, file_name, item_link):
