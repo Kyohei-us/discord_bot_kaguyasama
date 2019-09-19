@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from discord.ext.commands import Bot
 
 from test_python_scrape import ImageScraper
-import crawlTweets
+import crawlTweets as tw
 
 import time
 
@@ -36,7 +36,7 @@ async def on_message(message):
     if message.content.startswith("$twitter"):
         channel = message.channel
         tweets = []
-        tweets = letscrawl(tweets)
+        tweets = tw.letscrawl(tweets)
         for tweet in tweets:
             await channel.send(tweet)
 
