@@ -63,6 +63,7 @@ async def on_message(message):
         lengthOfSearchKeyword = len(searchKeyword)
         num_of_images = int(searchKeyword[lengthOfSearchKeyword-1])
         for keyword in range(lengthOfSearchKeyword-1):
+            beforeElapsed = time.time()
             await channel.send("I'm scraping images of {} for {}!".format(searchKeyword[keyword], message.author.name))
             selectSoup = scraper.scrape_images(search_image = searchKeyword[keyword], num_of_images = num_of_images)
             numberForScrapeloop = num_of_images
@@ -79,6 +80,8 @@ async def on_message(message):
                 loopingNth = loopingNth + 1
                 numberForScrapeloop = numberForScrapeloop - 1
             print("image scraped")
+            afterElapsed = time.time() - beforeElapsed
+            await channel.send("It took {:.2f} seconds.".format(afterElapsed))
 
         #await asyncio.sleep(60)
 
