@@ -22,6 +22,8 @@ AT = ACCESS_TOKEN
 ATS = ACCESS_TOKEN_SECRET
 twitter = OAuth1Session(CK, CS, AT, ATS) #認証処理
 
+listSaved = ""
+
 def letscrawl(tweets, keywordFromOutside):
     keyword = keywordFromOutside
 
@@ -56,6 +58,10 @@ def seeLists(tweets):
 
     params ={'count' : 5} #取得数
     res = twitter.get(url, params = params)
+
+    if listSaved == res:
+        return ["There is No Update yet."]
+    listSaved = res
 
     limit = res.headers['x-rate-limit-remaining']
     reset = res.headers['x-rate-limit-reset']
