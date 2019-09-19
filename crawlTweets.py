@@ -28,7 +28,7 @@ def letscrawl(tweets, keywordFromOutside):
 
     limit = res.headers['x-rate-limit-remaining']
     reset = res.headers['x-rate-limit-reset']
-    tweets.append("limit is {}.\nreset is {}\n")
+    tweets.append("limit is {}.\nreset is {}\n".format(limit, reset))
     print(limit + " is limit")
 
     if res.status_code == 200: #正常通信出来た場合
