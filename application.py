@@ -40,6 +40,7 @@ async def on_message(message):
         tweets = tw.letscrawl(tweets, message.content)
         for tweet in tweets:
             await channel.send(tweet)
+        await channel.send("Twitter Search Finished!")
 
     if message.content.startswith('$scrape'):
         start_time = time.time()
