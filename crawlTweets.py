@@ -57,11 +57,11 @@ def seeLists(tweets):
     params ={'count' : 5} #取得数
     res = twitter.get(url, params = params)
 
-    with open('listSaved.txt', 'r') as outfile:
-        listSaved = json.loads(outfile)
+    with open('listSaved.json', 'r') as outfile:
+        listSaved = json.load(outfile)
         if jsonify(res) == listSaved:
             return ["There is No Update yet."]
-    with open('listSaved.txt', 'w') as outfile:
+    with open('listSaved.json', 'w') as outfile:
         json.dump(jsonify(res), outfile)
 
 
