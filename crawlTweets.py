@@ -57,12 +57,14 @@ def seeLists(tweets):
     params ={'count' : 5} #取得数
     res = twitter.get(url, params = params)
 
+
+    jsonedres = json.dumps(res)
     with open('listSaved.json', 'r') as outfile:
         listSaved = json.load(outfile)
-        if jsonify(res) == listSaved:
+        if jsonedres == listSaved:
             return ["There is No Update yet."]
     with open('listSaved.json', 'w') as outfile:
-        json.dump(jsonify(res), outfile)
+        json.dump(jsonedres, outfile)
 
 
     limit = res.headers['x-rate-limit-remaining']
