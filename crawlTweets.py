@@ -38,9 +38,7 @@ def letscrawl(tweets, keywordFromOutside):
         for line in timelines['statuses']: #タイムラインリストをループ処理
             #print(line['text'])
             #print("--------------------------------------")
-            tweets.append("--------------------------")
-            tweets.append(line['user']['name']+':\n\n{}\n\n{}'.format(line['user']['profile_image_url_https'],line['text']))
-            tweets.append("--------------------------")
+            tweets.append('--------------------------\n{}:\n\nprofile image is :\n{}\n\n{}\n--------------------------'.format(line['user']['name'],line['user']['profile_image_url_https'],line['text']))
             #print(line['user']['name']+':\n:'+line['text'])
             #print(line['created_at'])
             #print('*******************************************')
