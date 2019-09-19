@@ -20,6 +20,7 @@ class ImageScraper:
                 link = selectSoup[nthimage]["src"]
             except Exception as e:
                 print(e)
+        image_url = ""
 
         if "imgurl" in link:
 
