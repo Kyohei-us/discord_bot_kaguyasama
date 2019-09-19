@@ -52,7 +52,7 @@ def letscrawl(tweets, keywordFromOutside):
 
 def seeLists(tweets):
 
-    url = "https://api.twitter.com/1.1/lists/statuses.json?slug=main&owner_screen_name=UniversityKenCA"
+    url = "https://api.twitter.com/1.1/lists/statuses.json?slug=main&owner_screen_name=UniversityKenCA&count=20"
 
     params ={'count' : 5} #取得数
     res = twitter.get(url, params = params)
