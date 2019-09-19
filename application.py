@@ -33,7 +33,11 @@ async def on_ready():
 async def on_message(message):
     if message.content.startswith('$greet'):
         channel = message.channel
-        await channel.send('Say hello! ' +  message.author.name)
+        thinkReply = message.content[7:]
+        if thinkReply.startswith('hello') or thinkReply.startswith('Hello'):
+            await channel.send('Hello {}'.format(message.author.name))
+        else:
+            await channel.send("What's up {}?".format(message.author.name))
 
     if message.content.startswith("$twitter"):
         channel = message.channel
