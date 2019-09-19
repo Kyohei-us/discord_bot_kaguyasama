@@ -36,7 +36,7 @@ def letscrawl(tweets, keywordFromOutside):
             #print(line['text'])
             #print("--------------------------------------")
             tweets.append("--------------------------")
-            tweets.append(line['user']['name']+':\n\n'+line['text'])
+            tweets.append(line['user']['name']+':\n\n{}:\n\n{}'.format("profile_image_url_https",line['text']))
             tweets.append("--------------------------")
             #print(line['user']['name']+':\n:'+line['text'])
             #print(line['created_at'])
