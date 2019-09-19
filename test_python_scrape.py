@@ -12,9 +12,6 @@ class ImageScraper:
         self.name = "a"
 
     def sliceImageList(self, selectSoup, nthimage):
-        if nameCounter >= num_of_images:
-            driver.quit()
-            break
         try:
             link = selectSoup[nthimage]["href"]
         except Exception as e:
