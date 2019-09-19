@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 from discord.ext.commands import Bot
 
 from test_python_scrape import ImageScraper
+import crawlTweets
 
 import time
 
@@ -24,11 +25,6 @@ async def on_ready():
     target_channel = bot.get_channel(618957085928980492)
     await target_channel.send("I'm ready. Please talk to me! For commands, go to how-to channel.")
 
-# @bot.command()
-# async def send(*, message):
-#     global target_channel
-#     await bot.send_message(channel, message)
-
 
 
 @bot.event
@@ -36,6 +32,14 @@ async def on_message(message):
     if message.content.startswith('$greet'):
         channel = message.channel
         await channel.send('Say hello! ' +  message.author.name)
+
+    if message.content.startswith("$twitter"):
+        channel = message.channel
+        tweets = []
+        tweets = letscrawl(tweets)
+        for tweet in tweets:
+            await channel.send(tweet)
+
     if message.content.startswith('$scrape'):
         start_time = time.time()
         channel = message.channel
@@ -63,7 +67,7 @@ async def on_message(message):
 
         elapsed_time = time.time() - start_time
         print("scraping images is done!")
-        await channel.send("I finished scraping images!! It took {:2f} seconds.".format(elapsed_time))
+        await channel.send("I finished scraping images!! It took {:.2f} seconds. \n I'm waiting for commands.".format(elapsed_time))
 
 
 
