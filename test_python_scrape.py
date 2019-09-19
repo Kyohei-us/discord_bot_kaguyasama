@@ -13,11 +13,13 @@ class ImageScraper:
 
     def sliceImageList(self, selectSoup, nthimage):
         try:
-            link = selectSoup[nthimage]["href"]
+            image = selectSoup[nthimage]
+            link = image["href"]
         except Exception as e:
             print(e)
             try:
-                link = selectSoup[nthimage]["src"]
+                image = selectSoup[nthimage]
+                link = image["src"]
             except Exception as e:
                 print(e)
 
@@ -63,7 +65,7 @@ class ImageScraper:
             #END of if statement in for selectSoup loop
         else:
             image_url = link
-            
+
         return image_url
 
     def scrape_images(self, search_image, num_of_images):
