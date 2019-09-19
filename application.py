@@ -64,6 +64,7 @@ async def on_message(message):
             for i in range(num_of_images):
                 scraped_image = scraper.sliceImageList(selectSoup, i*2)
                 await channel.send(scraped_image)
+                await channel.send("{} more image(s) are coming right now!".format(num_of_images - i - 1))
             print("image scraped")
 
         #await asyncio.sleep(60)
