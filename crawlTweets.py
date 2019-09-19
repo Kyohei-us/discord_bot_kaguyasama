@@ -59,10 +59,10 @@ def seeLists(tweets):
 
     with open('listSaved.txt', 'r') as outfile:
         listSaved = json.load(outfile)
-        if res == listSaved:
+        if jsonify(res) == listSaved:
             return ["There is No Update yet."]
     with open('listSaved.txt', 'w') as outfile:
-        json.dump(res, outfile)
+        json.dump(jsonify(res), outfile)
 
 
     limit = res.headers['x-rate-limit-remaining']
