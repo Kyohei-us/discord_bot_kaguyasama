@@ -65,10 +65,9 @@ async def on_message(message):
             loopingNth = 0
             while numberForScrapeloop > 0:
                 scraped_image = scraper.sliceImageList(selectSoup, loopingNth)
-                loopingInloopingNth = loopingNth
                 while scraped_image == "#":
-                    loopingInloopingNth = loopingInloopingNth + 1
-                    scraped_image = scraper.sliceImageList(selectSoup, loopingInloopingNth)
+                    loopingNth = loopingNth + 1
+                    scraped_image = scraper.sliceImageList(selectSoup, loopingNth)
                 await channel.send(scraped_image)
                 await channel.send("{} more image(s) are coming right now!".format(num_of_images - 1 - loopingNth))
                 loopingNth = loopingNth + 1
