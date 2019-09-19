@@ -61,7 +61,7 @@ async def on_message(message):
         for keyword in range(lengthOfSearchKeyword-1):
             await channel.send("I'm scraping images of {} for {}!".format(searchKeyword[keyword], message.author.name))
             selectSoup = scraper.scrape_images(search_image = searchKeyword[keyword], num_of_images = num_of_images)
-            numberForScrapeloop = range(num_of_images)
+            numberForScrapeloop = num_of_images
             loopingNth = 0
             while numberForScrapeloop > 0:
                 scraped_image = scraper.sliceImageList(selectSoup, loopingNth)
