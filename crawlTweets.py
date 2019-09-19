@@ -49,3 +49,28 @@ def letscrawl(tweets, keywordFromOutside):
         print("Failed: %d" % res.status_code)
 
     return tweets
+
+def seeLists():
+
+    url = "https://api.twitter.com/1.1/lists/statuses.json?slug=main&owner_screen_name=UniversityKenCA"
+
+    params ={'count' : 5} #取得数
+    res = twitter.get(url, params = params)
+
+    limit = res.headers['x-rate-limit-remaining']
+    reset = res.headers['x-rate-limit-reset']
+    sec = int(int(reset) - time.mktime(datetime.datetime.now().timetuple()))
+    tweets.append("limit is {}.\nreset is {}.\nIn second, {}".format(limit, reset, sec))
+    print(limit + " is limit")
+
+    if res.status_code == 200: #正常通信出来た場合
+        timelines = json.loads(res.text) #レスポンスからタイムラインリストを取得
+        for line in timelines: #タイムラインリストをループ処理
+            #print(line['text'])
+            #print("--------------------------------------")
+            tweets.append('{}\n\n{}\n--------------------------'.format(line['user']['name'],line['text']))
+            #print(line['user']['name']+':\n:'+line['text'])
+            #print(line['created_at'])
+            #print('*******************************************')
+    else: #正常通信出来なかった場合
+        print("Failed: %d" % res.status_code)
