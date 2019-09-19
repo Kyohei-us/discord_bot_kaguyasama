@@ -5,10 +5,13 @@ from selenium.webdriver.chrome.options import Options
 import chromedriver_binary
 import time, datetime
 
-CONSUMER_KEY = "RP2J9vbernYv0XOjjpm2HST2h"
-CONSUMER_SECRET = "pQvjV4piscKWS0DtyZo6XVQIPyP7XafymvSkV736CmSaXCzgYs"
-ACCESS_TOKEN = "1117174431850221568-6g9IerfbvLsz0a4ZJhBMGxaip0aj2k"
-ACCESS_TOKEN_SECRET = "UwVHlvl8xDxNMLL8DpgxiZMLcFISzLgfdEEWsTRgdzNco"
+import os
+from dotenv import load_dotenv
+load_dotenv()
+CONSUMER_KEY = os.getenv('CONSUMER_KEY')
+CONSUMER_SECRET = os.getenv('CONSUMER_SECRET')
+ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
+ACCESS_TOKEN_SECRET = os.getenv('ACCESS_TOKEN_SECRET')
 
 import json #標準のjsonモジュールとconfig.pyの読み込み
 from requests_oauthlib import OAuth1Session #OAuthのライブラリの読み込み
