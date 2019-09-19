@@ -53,7 +53,7 @@ class ImageScraper:
 
             print(deeplink)
 
-            nameCounter = nameCounter + 1
+            #nameCounter = nameCounter + 1
             image_url = deeplink
             #image_name = image + "_" + str(nameCounter)
             #self.save_image(image_name, image_url)
