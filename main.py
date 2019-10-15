@@ -2,7 +2,7 @@ import os
 from multiprocessing import Pool
 
 
-processes = ('application.py', 'test2.py')
+processes = ('app.py', 'test2.py')
 
 
 def run_process(process):
