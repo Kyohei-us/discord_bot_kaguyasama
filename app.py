@@ -16,8 +16,10 @@ from bs4 import BeautifulSoup
 import time
 
 
-load_dotenv()
-bot_token = os.getenv('NjE4OTU0MzUzNzQyNDQ2NjAy.XaZQqQ.5VrcUUruo90z4WBAO0MyJ5XwqR8')
+# load_dotenv()
+# bot_token = os.getenv('BOT_TOKEN')
+
+bot_token = 'NjE4OTU0MzUzNzQyNDQ2NjAy.XaZQqQ.5VrcUUruo90z4WBAO0MyJ5XwqR8'
 
 bot = Bot(command_prefix='!')
 
