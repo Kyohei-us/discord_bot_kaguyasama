@@ -15,7 +15,7 @@ from bs4 import BeautifulSoup
 
 import time
 
-print("<html>This is just a discord bot.</html>")
+print("<html><body>This is just a discord bot.</body></html>")
 
 load_dotenv()
 bot_token = os.getenv('BOT_TOKEN')
