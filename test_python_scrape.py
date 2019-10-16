@@ -7,8 +7,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import chromedriver_binary
 
-CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
-
 class ImageScraper:
     def __init__(self):
         self.name = "a"
@@ -97,8 +95,12 @@ class ImageScraper:
         # Headlessモードを有効にする（コメントアウトするとブラウザが実際に立ち上がります）
         options.headless = True
 
+        print('trying to open browser')
+
         # ブラウザを起動する
         driver = webdriver.Chrome(options=options, executable_path=CHROMEDRIVER_PATH)
+
+        print('browser is open.')
 
         # ブラウザでアクセスする
         driver.get("https://www.google.com/search?q=" + image + "&tbm=isch")
