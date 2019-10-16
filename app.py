@@ -21,8 +21,8 @@ import time
 
 bot = Bot(command_prefix='!')
 
-a = os.environ.get('GOOGLE_CHROME_BIN')
-b = os.environ.get('CHROMEDRIVER_PATH')
+global a = os.environ.get('GOOGLE_CHROME_BIN')
+global b = os.environ.get('CHROMEDRIVER_PATH')
 
 @bot.event
 async def on_ready():
