@@ -58,7 +58,7 @@ async def on_message(message):
             await channel.send(tweet)
         await channel.send("Twitter List is all!")
 
-    elif message.content.startswith('$scrape'):
+    else message.content.startswith('$scrape'):
         start_time = time.time()
         channel = message.channel
         print("received command")
