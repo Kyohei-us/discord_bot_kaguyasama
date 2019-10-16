@@ -16,8 +16,8 @@ from bs4 import BeautifulSoup
 import time
 
 
-load_dotenv()
-bot_token = os.getenv('BOT_TOKEN')
+#load_dotenv()
+#bot_token = os.getenv('BOT_TOKEN')
 
 
 bot = Bot(command_prefix='!')
@@ -102,4 +102,4 @@ async def on_message(message):
 
 
 
-bot.run(bot_token)
+bot.run(config.BOT_TOKEN)
