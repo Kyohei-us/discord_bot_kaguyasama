@@ -49,7 +49,7 @@ class ImageScraper:
             driver2.get("https://www.google.com" + link)
 
             # HTMLを文字コードをUTF-8に変換してから取得します。
-            html2 = driver2.page_source.encode('utf-8')
+            html2 = driver2.page_source
 
             soup2 = BeautifulSoup(html2, 'html.parser')
 
@@ -123,7 +123,7 @@ class ImageScraper:
 
 
         # HTMLを文字コードをUTF-8に変換してから取得します。
-        html = driver.page_source.encode('utf-8')
+        html = driver.page_source
 
         soup = BeautifulSoup(html, 'html.parser')
 
