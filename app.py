@@ -41,7 +41,7 @@ async def on_message(message):
         else:
             await channel.send("What's up {}?".format(message.author.name))
 
-    if message.content.startswith("$twitterS"):
+    elif message.content.startswith("$twitterS"):
         channel = message.channel
         message.content = message.content[10:]
         tweets = []
@@ -50,7 +50,7 @@ async def on_message(message):
             await channel.send(tweet)
         await channel.send("Twitter Search Finished!")
 
-    if message.content.startswith("$twitterL"):
+    elif message.content.startswith("$twitterL"):
         channel = message.channel
         tweets = []
         tweets = tw.seeLists(tweets)
@@ -58,7 +58,7 @@ async def on_message(message):
             await channel.send(tweet)
         await channel.send("Twitter List is all!")
 
-    if message.content.startswith('$scrape'):
+    elif message.content.startswith('$scrape'):
         start_time = time.time()
         channel = message.channel
         print("received command")
