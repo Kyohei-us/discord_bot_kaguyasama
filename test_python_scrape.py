@@ -95,6 +95,8 @@ class ImageScraper:
         # Headlessモードを有効にする（コメントアウトするとブラウザが実際に立ち上がります）
         options.headless = True
 
+        options.binary_location = GOOGLE_CHROME_BIN
+
         print('trying to open browser')
 
         # ブラウザを起動する
