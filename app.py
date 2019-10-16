@@ -15,7 +15,6 @@ from bs4 import BeautifulSoup
 
 import time
 
-
 #load_dotenv()
 #bot_token = os.getenv('BOT_TOKEN')
 
@@ -41,7 +40,7 @@ async def on_message(message):
         else:
             await channel.send("What's up {}?".format(message.author.name))
 
-    elif message.content.startswith("$twitterS"):
+    if message.content.startswith("$twitterS"):
         channel = message.channel
         message.content = message.content[10:]
         tweets = []
@@ -50,7 +49,7 @@ async def on_message(message):
             await channel.send(tweet)
         await channel.send("Twitter Search Finished!")
 
-    elif message.content.startswith("$twitterL"):
+    if message.content.startswith("$twitterL"):
         channel = message.channel
         tweets = []
         tweets = tw.seeLists(tweets)
@@ -58,7 +57,7 @@ async def on_message(message):
             await channel.send(tweet)
         await channel.send("Twitter List is all!")
 
-    elif message.content.startswith('$scrape'):
+    if message.content.startswith('$scrape'):
         start_time = time.time()
         channel = message.channel
         print("received command")
