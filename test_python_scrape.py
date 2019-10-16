@@ -35,7 +35,7 @@ class ImageScraper:
             # ブラウザのオプションを格納する変数をもらってきます。
             options2 = Options()
 
-            print(GOOGLE_CHROME_PATH, "working?")
+            print(GOOGLE_CHROME_PATH)
 
             options2.binary_location = GOOGLE_CHROME_PATH
 
