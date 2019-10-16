@@ -8,6 +8,7 @@ from selenium.webdriver.chrome.options import Options
 import chromedriver_binary
 
 CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
+GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
 
 class ImageScraper:
     def __init__(self):
@@ -33,6 +34,8 @@ class ImageScraper:
 
             # ブラウザのオプションを格納する変数をもらってきます。
             options2 = Options()
+
+            options2.binary_location = GOOGLE_CHROME_PATH
 
             # Headlessモードを有効にする（コメントアウトするとブラウザが実際に立ち上がります）
             options2.headless = True
@@ -91,6 +94,8 @@ class ImageScraper:
 
         # ブラウザのオプションを格納する変数をもらってきます。
         options = Options()
+
+        options.binary_location = GOOGLE_CHROME_PATH
 
         # Headlessモードを有効にする（コメントアウトするとブラウザが実際に立ち上がります）
         options.headless = True
