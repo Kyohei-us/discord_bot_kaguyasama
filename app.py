@@ -74,6 +74,8 @@ async def on_message(message):
         print("scraping images is done!")
         await channel.send("I finished scraping images!! It took {:.2f} seconds. \n I'm waiting for commands.".format(elapsed_time))
 
+        await bot.process_commands(message)
+
     # if message.content.startswith('$greet'):
     #     channel = message.channel
     #     thinkReply = message.content[7:]
@@ -102,6 +104,7 @@ async def on_message(message):
 
     else:
         channel.send("No Keyword detected")
+        await bot.process_commands(message)
 
 
 bot.run('NjE4OTU0MzUzNzQyNDQ2NjAy.XaZqkg.pr4hTx9zyErsxWEGvBOxGEaQ22s')
