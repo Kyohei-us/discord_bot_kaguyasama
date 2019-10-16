@@ -30,15 +30,20 @@ class ImageScraper:
             print("\nYES\n")
 
             # ブラウザのオプションを格納する変数をもらってきます。
-            options2 = Options()
+            #options2 = Options()
+            chrome_options = webdriver.ChromeOptions()
+            chrome_options.binary_location = os.environ.get('GOOGLE_CHROME_BIN')
+            chrome_options.add_argument('--headless')
+            chrome_options.add_argument('--disable-dev-shm-usage')
+            chrome_options.add_argument('--no-sandbox')
+            driver2 = webdriver.Chrome(executable_path = os.environ.get('CHROMEDRIVER_PATH'), chrome_options = chrome_options)
 
-            print(GOOGLE_CHROME_PATH, 'working?')
 
             # Headlessモードを有効にする（コメントアウトするとブラウザが実際に立ち上がります）
-            options2.headless = True
+            #options2.headless = True
 
             # ブラウザを起動する
-            driver2 = webdriver.Chrome(options=options2, executable_path=CHROMEDRIVER_PATH)
+            #driver2 = webdriver.Chrome(options=options2, executable_path=CHROMEDRIVER_PATH)
 
             # ブラウザでアクセスする
             driver2.get("https://www.google.com" + link)
@@ -90,12 +95,17 @@ class ImageScraper:
 
 
         # ブラウザのオプションを格納する変数をもらってきます。
-        options = Options()
+        #options = Options()
 
         # Headlessモードを有効にする（コメントアウトするとブラウザが実際に立ち上がります）
-        options.headless = True
+        #options.headless = True
 
-        options.binary_location = GOOGLE_CHROME_BIN
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.binary_location = os.environ.get('GOOGLE_CHROME_BIN')
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+        chrome_options.add_argument('--no-sandbox')
+        driver = webdriver.Chrome(executable_path = os.environ.get('CHROMEDRIVER_PATH'), chrome_options = chrome_options)
 
         print('trying to open browser')
 
