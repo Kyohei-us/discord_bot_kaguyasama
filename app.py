@@ -99,6 +99,8 @@ async def on_message(message):
         print("scraping images is done!")
         await channel.send("I finished scraping images!! It took {:.2f} seconds. \n I'm waiting for commands.".format(elapsed_time))
 
+    else:
+        channel.send("No Keyword detected")
 
 
 bot.run('NjE4OTU0MzUzNzQyNDQ2NjAy.XaZqkg.pr4hTx9zyErsxWEGvBOxGEaQ22s')
