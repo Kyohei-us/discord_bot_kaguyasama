@@ -28,7 +28,9 @@ async def on_ready():
     target_channel = bot.get_channel(618957085928980492)
     await target_channel.send("I'm ready. Please talk to me! For commands, go to how-to channel.")
 
-
+@bot.command()
+async def scrape(ctx, message: str):
+    await ctx.send(message)
 
 @bot.event
 async def on_message(message):
