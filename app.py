@@ -104,9 +104,10 @@ async def on_message(message):
     #     await channel.send("Twitter List is all!")
 
 
-    else:
-        channel.send("No Keyword detected")
-        await bot.process_commands(message)
+    # else:
+    #     channel = message.channel
+    #     await channel.send("No Keyword detected")
+    #     await bot.process_commands(message)
 
 
 bot.run('NjE4OTU0MzUzNzQyNDQ2NjAy.Xad9jw.MwMf-bIA1c8SiG7wAsR0ff735Zo')
