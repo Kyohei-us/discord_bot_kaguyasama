@@ -38,7 +38,7 @@ async def on_message(message):
         start_time = time.time()
         channel = message.channel
         print("received command")
-        await channel.send("I received scraping command", CHROMEDRIVER_PATH, GOOGLE_CHROME_BIN)
+        await channel.send("I received scraping command")
         scraper = ImageScraper()
         print("Scraper is generated")
         await channel.send("Scraper is generated")
