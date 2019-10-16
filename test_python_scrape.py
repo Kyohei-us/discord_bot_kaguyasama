@@ -7,6 +7,8 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import chromedriver_binary
 
+CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
+
 class ImageScraper:
     def __init__(self):
         self.name = "a"
@@ -36,7 +38,7 @@ class ImageScraper:
             options2.headless = True
 
             # ブラウザを起動する
-            driver2 = webdriver.Chrome(options=options2, executable_path=r"/usr/local/lib/python3.6/dist-packages/chromedriver_binary/chromedriver")
+            driver2 = webdriver.Chrome(options=options2, executable_path=CHROMEDRIVER_PATH)
 
             # ブラウザでアクセスする
             driver2.get("https://www.google.com" + link)
@@ -94,7 +96,7 @@ class ImageScraper:
         options.headless = True
 
         # ブラウザを起動する
-        driver = webdriver.Chrome(options=options, executable_path=r"/usr/local/lib/python3.6/dist-packages/chromedriver_binary/chromedriver")
+        driver = webdriver.Chrome(options=options, executable_path=CHROMEDRIVER_PATH)
 
         # ブラウザでアクセスする
         driver.get("https://www.google.com/search?q=" + image + "&tbm=isch")
