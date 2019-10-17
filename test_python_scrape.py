@@ -110,7 +110,7 @@ class ImageScraper:
         print('trying to open browser')
 
         # ブラウザを起動する
-        driver = webdriver.Chrome(options=options, executable_path='/app/.chromedriver/bin/chromedriver')
+        #driver = webdriver.Chrome(options=options, executable_path='/app/.chromedriver/bin/chromedriver')
 
         print('browser is open.')
 
