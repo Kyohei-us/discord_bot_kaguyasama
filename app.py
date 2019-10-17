@@ -27,10 +27,10 @@ async def on_ready():
     print("I'm ready.")
     global target_channel
     target_channel = bot.get_channel(618957085928980492)
-    await target_channel.send("I'm ready. Please talk to me! For commands, go to how-to channel." + str(os.environ.get('GOOGLE_CHROME_BIN')))
+    await target_channel.send("I'm ready. Please talk to me! For commands, go to how-to channel. " + str(os.environ.get('GOOGLE_CHROME_BIN')) + str(os.environ.get('CHROMEDRIVER_PATH')))
 
 @bot.command()
-async def scrape(ctx, message: str):
+async def test(ctx, message: str):
     await ctx.send(message)
 
 @bot.event
