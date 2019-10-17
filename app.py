@@ -29,7 +29,7 @@ async def test(ctx, *, arg):
 async def on_reaction_add(reaction, user):
     message = reaction.message
     channel = reaction.message.channel
-    await channel.send(message + "This message has a reaction added right now.")
+    await channel.send(message + " : This message has a reaction added right now.")
 
 @bot.event
 async def on_message(message):
