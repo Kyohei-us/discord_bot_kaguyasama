@@ -1,26 +1,17 @@
 # bot.py
 import os
-
 import asyncio
-
 import discord
 #from dotenv import load_dotenv
-
 from discord.ext.commands import Bot
-
 from test_python_scrape import ImageScraper
 import crawlTweets as tw
-
 from bs4 import BeautifulSoup
-
 import time
 
 #load_dotenv()
 #bot_token = os.getenv('BOT_TOKEN')
-
-
 bot = Bot(command_prefix='!')
-
 #str(os.environ.get('GOOGLE_CHROME_BIN')) + str(os.environ.get('CHROMEDRIVER_PATH'))
 
 @bot.event
@@ -33,6 +24,12 @@ async def on_ready():
 @bot.command(name='test_command')
 async def test(ctx, *, arg):
     await ctx.send(arg + ' : is your message')
+
+@bot.event
+async def on_reaction_add(reaction, user):
+    message = reaction.message
+    channel = reaction.message.get_channel
+    await channel.send(message + "This message has a reaction added right now.")
 
 @bot.event
 async def on_message(message):
@@ -76,7 +73,8 @@ async def on_message(message):
 
         elapsed_time = time.time() - start_time
         print("scraping images is done!")
-        await channel.send("I finished scraping images!! It took {:.2f} seconds. \n I'm waiting for commands.".format(elapsed_time))
+        await channel.send("""I finished scraping images!! It took {:.2f} seconds. \n
+        I'm waiting for commands.""".format(elapsed_time))
 
         await bot.process_commands(message)
 
