@@ -21,13 +21,14 @@ import time
 
 bot = Bot(command_prefix='!')
 
+#str(os.environ.get('GOOGLE_CHROME_BIN')) + str(os.environ.get('CHROMEDRIVER_PATH'))
 
 @bot.event
 async def on_ready():
     print("I'm ready.")
     global target_channel
     target_channel = bot.get_channel(618957085928980492)
-    await target_channel.send("I'm ready. Please talk to me! For commands, go to how-to channel. " + str(os.environ.get('GOOGLE_CHROME_BIN')) + str(os.environ.get('CHROMEDRIVER_PATH')))
+    await target_channel.send("I'm ready. Please talk to me! For commands, go to how-to channel. ")
 
 @bot.command()
 async def test(ctx, message: str):
