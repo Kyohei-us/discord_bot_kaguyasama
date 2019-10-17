@@ -111,5 +111,6 @@ async def on_message(message):
     #     await channel.send("No Keyword detected")
     #     await bot.process_commands(message)
 
+    await bot.process_commands(message)
 
 bot.run(os.environ.get('BOT_TOKEN'))
