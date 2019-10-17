@@ -7,19 +7,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import chromedriver_binary
 
-import asyncio
-
-import discord
-#from dotenv import load_dotenv
-
-from discord.ext.commands import Bot
-
-bot = Bot(command_prefix='!')
-
-bot.run('NjE4OTU0MzUzNzQyNDQ2NjAy.Xad9jw.MwMf-bIA1c8SiG7wAsR0ff735Zo')
-
-channel = bot.get_channel(618957085928980492)
-
 class ImageScraper:
     def __init__(self):
         self.name = "a"
@@ -89,8 +76,6 @@ class ImageScraper:
         return image_url
 
     def scrape_images(self, search_image, num_of_images):
-
-        channel.send('trying to open browser.')
 
         link = ""
         title = ""
