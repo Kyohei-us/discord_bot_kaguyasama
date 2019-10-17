@@ -30,7 +30,7 @@ async def on_ready():
     target_channel = bot.get_channel(618957085928980492)
     await target_channel.send("I'm ready. Please talk to me! For commands, go to how-to channel. ")
 
-@bot.command()
+@bot.command(name='test_command')
 async def test(ctx, *, arg):
     await ctx.send(arg + ' : is your message')
 
