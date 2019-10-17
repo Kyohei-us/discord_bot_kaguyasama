@@ -32,7 +32,8 @@ async def on_ready():
 
 @bot.command()
 async def test(ctx, message):
-    await ctx.send(message)
+    channel = message.channel
+    await channel.send(message + ' : is your message')
 
 @bot.event
 async def on_message(message):
