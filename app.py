@@ -111,4 +111,4 @@ async def on_message(message):
     #     await bot.process_commands(message)
 
 
-bot.run('NjE4OTU0MzUzNzQyNDQ2NjAy.Xad9jw.MwMf-bIA1c8SiG7wAsR0ff735Zo')
+bot.run(os.environ.get('BOT_TOKEN'))
