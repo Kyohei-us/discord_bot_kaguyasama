@@ -40,6 +40,14 @@ async def on_reaction_add(reaction, user):
 #     except NotFound:
 #         continue
 
+@bot.command(name='twitterL')
+async def fetch_twitter_list(ctx, *, arg):
+    channel = ctx.message.channel
+    tweets = []
+    tweets = tw.seeLists(tweets)
+    for tweet in tweets:
+        await channel.send(tweet)
+    await channel.send("Twitter List is all!")
 
 @bot.event
 async def on_message(message):
@@ -107,14 +115,6 @@ Now I'm waiting for commands.""".format(elapsed_time))
         for tweet in tweets:
             await channel.send(tweet)
         await channel.send("Twitter Search Finished!")
-
-    if message.content.startswith("$twitterL"):
-        channel = message.channel
-        tweets = []
-        tweets = tw.seeLists(tweets)
-        for tweet in tweets:
-            await channel.send(tweet)
-        await channel.send("Twitter List is all!")
 
 
 

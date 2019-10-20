@@ -22,12 +22,13 @@ AT = ACCESS_TOKEN
 ATS = ACCESS_TOKEN_SECRET
 twitter = OAuth1Session(CK, CS, AT, ATS) #認証処理
 
-def letscrawl(tweets, keywordFromOutside):
+def letscrawl(tweets, keywordFromOutside, countPara = 5):
+    count = countPara
     keyword = keywordFromOutside
 
     url = "https://api.twitter.com/1.1/search/tweets.json?q=" + keyword + "&result_type=mixed&count=10" #タイムライン取得エンドポイント
 
-    params ={'count' : 5} #取得数
+    params ={'count' : count} #取得数
     res = twitter.get(url, params = params)
 
     limit = res.headers['x-rate-limit-remaining']
@@ -41,7 +42,7 @@ def letscrawl(tweets, keywordFromOutside):
         for line in timelines['statuses']: #タイムラインリストをループ処理
             #print(line['text'])
             #print("--------------------------------------")
-            tweets.append('--------------------------\n{}:\n\nprofile image is :\n{}\n\n{}\n--------------------------'.format(line['user']['name'],line['user']['profile_image_url_https'],line['text']))
+            tweets.append('------------\n{}:\n\nprofile image is :\n{}\n\n{}\n----------------'.format(line['user']['name'],line['user']['profile_image_url_https'],line['text']))
             #print(line['user']['name']+':\n:'+line['text'])
             #print(line['created_at'])
             #print('*******************************************')
@@ -50,11 +51,11 @@ def letscrawl(tweets, keywordFromOutside):
 
     return tweets
 
-def seeLists(tweets):
-
+def seeLists(tweets, countPara = 5):
+    count = countPara
     url = "https://api.twitter.com/1.1/lists/statuses.json?slug=main&owner_screen_name=UniversityKenCA&count=10"
 
-    params ={'count' : 5} #取得数
+    params ={'count' : count} #取得数
     res = twitter.get(url, params = params)
 
     limit = res.headers['x-rate-limit-remaining']
