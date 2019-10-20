@@ -23,7 +23,7 @@ class ImageScraper:
             except Exception as e:
                 print(e)
 
-        image_url = "I found empty image. I'm sorry."
+        image_url = "I found an empty image. I'm sorry."
 
         if "imgurl" in link:
 
@@ -70,6 +70,9 @@ class ImageScraper:
 
             driver2.quit()
             #END of if statement in for selectSoup loop
+        elif link.startswith('/'):
+            link = 'https://www.google.com' + link
+            image_url = link
         else:
             image_url = link
 

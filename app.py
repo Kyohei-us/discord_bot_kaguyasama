@@ -91,13 +91,13 @@ Now I'm waiting for commands.""".format(elapsed_time))
 
         #await bot.process_commands(message)
 
-    # if message.content.startswith('$greet'):
-    #     channel = message.channel
-    #     thinkReply = message.content[7:]
-    #     if thinkReply.startswith('hello') or thinkReply.startswith('Hello'):
-    #         await channel.send('Hello {}'.format(message.author.name))
-    #     else:
-    #         await channel.send("What's up {}?".format(message.author.name))
+    if message.content.startswith('$greet'):
+        channel = message.channel
+        thinkReply = message.content[7:]
+        if thinkReply.startswith('hello') or thinkReply.startswith('Hello'):
+            await channel.send('Hello {}'.format(message.author.name))
+        else:
+            await channel.send("What's up {}?".format(message.author.name))
 
     # if message.content.startswith("$twitterS"):
     #     channel = message.channel
@@ -117,10 +117,6 @@ Now I'm waiting for commands.""".format(elapsed_time))
     #     await channel.send("Twitter List is all!")
 
 
-    # else:
-    #     channel = message.channel
-    #     await channel.send("No Keyword detected")
-    #     await bot.process_commands(message)
 
     await bot.process_commands(message)
 
