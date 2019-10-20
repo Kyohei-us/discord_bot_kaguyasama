@@ -70,21 +70,24 @@ async def on_message(message):
                     loopingNth = loopingNth + 1
                     scraped_image = scraper.sliceImageList(selectSoup, loopingNth)
                 await channel.send(scraped_image)
-                await channel.send("{} more image(s) are coming right now!".format(num_of_images - 1 - counter))
+                if num_of_images - 1 - counter != 0:
+                    await channel.send("{} more image(s) are coming right now!".format(num_of_images - 1 - counter))
+                else:
+                    await channel.send("Image scraping finished.")
                 counter = counter + 1
                 loopingNth = loopingNth + 1
                 numberForScrapeloop = numberForScrapeloop - 1
-            print("image scraped")
+            print("image scrape done")
             afterElapsed = time.time() - beforeElapsed
-            await channel.send("It took {:.2f} seconds.".format(afterElapsed))
+            await channel.send("It took {:.2f} seconds to scrape images of {}.".format(afterElapsed, keyword))
 
         #await asyncio.sleep(60)
 
 
         elapsed_time = time.time() - start_time
         print("scraping images is done!")
-        await channel.send("""I finished scraping images!! It took {:.2f} seconds. \n
-        I'm waiting for commands.""".format(elapsed_time))
+        await channel.send("""I finished scraping all the images!! It took {:.2f} seconds.
+Now I'm waiting for commands.""".format(elapsed_time))
 
         await bot.process_commands(message)
 
