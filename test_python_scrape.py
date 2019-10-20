@@ -12,6 +12,7 @@ class ImageScraper:
         self.name = "a"
 
     def sliceImageList(self, selectSoup, nthimage):
+        link = "#"
         try:
             image = selectSoup[nthimage]
             link = image["href"]
