@@ -79,7 +79,7 @@ async def on_message(message):
                 numberForScrapeloop = numberForScrapeloop - 1
             print("image scrape done")
             afterElapsed = time.time() - beforeElapsed
-            await channel.send("It took {:.2f} seconds to scrape images of {}.".format(afterElapsed, keyword))
+            await channel.send("It took {:.2f} seconds to scrape images of {}.".format(afterElapsed, searchKeyword[keyword]))
 
         #await asyncio.sleep(60)
 
@@ -89,7 +89,7 @@ async def on_message(message):
         await channel.send("""I finished scraping all the images!! It took {:.2f} seconds.
 Now I'm waiting for commands.""".format(elapsed_time))
 
-        await bot.process_commands(message)
+        #await bot.process_commands(message)
 
     # if message.content.startswith('$greet'):
     #     channel = message.channel
