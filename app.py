@@ -99,22 +99,22 @@ Now I'm waiting for commands.""".format(elapsed_time))
         else:
             await channel.send("What's up {}?".format(message.author.name))
 
-    # if message.content.startswith("$twitterS"):
-    #     channel = message.channel
-    #     message.content = message.content[10:]
-    #     tweets = []
-    #     tweets = tw.letscrawl(tweets, message.content)
-    #     for tweet in tweets:
-    #         await channel.send(tweet)
-    #     await channel.send("Twitter Search Finished!")
-    #
-    # if message.content.startswith("$twitterL"):
-    #     channel = message.channel
-    #     tweets = []
-    #     tweets = tw.seeLists(tweets)
-    #     for tweet in tweets:
-    #         await channel.send(tweet)
-    #     await channel.send("Twitter List is all!")
+    if message.content.startswith("$twitterS"):
+        channel = message.channel
+        message.content = message.content[10:]
+        tweets = []
+        tweets = tw.letscrawl(tweets, message.content)
+        for tweet in tweets:
+            await channel.send(tweet)
+        await channel.send("Twitter Search Finished!")
+
+    if message.content.startswith("$twitterL"):
+        channel = message.channel
+        tweets = []
+        tweets = tw.seeLists(tweets)
+        for tweet in tweets:
+            await channel.send(tweet)
+        await channel.send("Twitter List is all!")
 
 
 
