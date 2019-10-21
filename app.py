@@ -69,14 +69,13 @@ async def greet_my_bot(ctx, *, arg):
 @bot.command(name='twitterS')
 async def search_on_twitter(ctx, *, arg):
     channel = ctx.message.channel
-    message = ctx.message
-    extractCountList = message.content.split(',')
+    extractCountList = arg.split(',')
     extractKeywordList = extractCountList[0].split(' ')
     tweets = []
     if len(extractCountList) > 1:
-        tweets = tw.letscrawl(tweets, message.content, count = int(extractCountList[1]))
+        tweets = tw.letscrawl(tweets, extractKeywordList[0], count = int(extractCountList[1]))
     else:
-        tweets = tw.letscrawl(tweets, message.content)
+        tweets = tw.letscrawl(tweets, extractKeywordList[0])
 
     for tweet in tweets:
         await channel.send(tweet)
