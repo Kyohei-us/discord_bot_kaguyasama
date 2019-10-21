@@ -45,7 +45,7 @@ async def fetch_twitter_list(ctx, *, arg):
     channel = ctx.message.channel
     tweets = []
     arg = int(arg)
-    tweets = tw.seeLists(tweets, arg)
+    tweets = tw.seeLists(tweets = tweets, count = arg)
     for tweet in tweets:
         await channel.send(tweet)
     await channel.send("Twitter List is all!")
@@ -71,7 +71,7 @@ async def search_on_twitter(ctx, *, arg):
     extractKeywordList = extractCountList[0].split(' ')
     tweets = []
     if len(extractCountList) > 1:
-        tweets = tw.letscrawl(tweets, message.content, int(extractCountList[1]))
+        tweets = tw.letscrawl(tweets, message.content, count = int(extractCountList[1]))
     else:
         tweets = tw.letscrawl(tweets, message.content)
 
