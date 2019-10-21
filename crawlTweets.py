@@ -25,7 +25,7 @@ twitter = OAuth1Session(CK, CS, AT, ATS) #認証処理
 def letscrawl(tweets, keywordFromOutside, count = 5):
     keyword = keywordFromOutside
 
-    url = "https://api.twitter.com/1.1/search/tweets.json?q=" + keyword + "&result_type=mixed&count=10" #タイムライン取得エンドポイント
+    url = "https://api.twitter.com/1.1/search/tweets.json?q=" + keyword + "&result_type=mixed&count=" + count #タイムライン取得エンドポイント
 
     params ={'count' : count} #取得数
     res = twitter.get(url, params = params)
@@ -51,7 +51,7 @@ def letscrawl(tweets, keywordFromOutside, count = 5):
     return tweets
 
 def seeLists(tweets, count = 5):
-    url = "https://api.twitter.com/1.1/lists/statuses.json?slug=main&owner_screen_name=UniversityKenCA&count=10"
+    url = "https://api.twitter.com/1.1/lists/statuses.json?slug=main&owner_screen_name=UniversityKenCA&count=" + count
 
     params ={'count' : count} #取得数
     res = twitter.get(url, params = params)
