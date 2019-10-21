@@ -66,21 +66,21 @@ async def greet_my_bot(ctx, *, arg):
     else:
         await channel.send("Do you not wanna greet me? Come on! lol")
 
-# @bot.command(name='twitterS')
-# async def search_on_twitter(ctx, *, arg):
-#     channel = ctx.message.channel
-#     message = ctx.message
-#     extractCountList = message.content.split(',')
-#     extractKeywordList = extractCountList[0].split(' ')
-#     tweets = []
-#     if len(extractCountList) > 1:
-#         tweets = tw.letscrawl(tweets, message.content, count = int(extractCountList[1]))
-#     else:
-#         tweets = tw.letscrawl(tweets, message.content)
-#
-#     for tweet in tweets:
-#         await channel.send(tweet)
-#     await channel.send("Twitter Search Finished!")
+@bot.command(name='twitterS')
+async def search_on_twitter(ctx, *, arg):
+    channel = ctx.message.channel
+    message = ctx.message
+    extractCountList = message.content.split(',')
+    extractKeywordList = extractCountList[0].split(' ')
+    tweets = []
+    if len(extractCountList) > 1:
+        tweets = tw.letscrawl(tweets, message.content, count = int(extractCountList[1]))
+    else:
+        tweets = tw.letscrawl(tweets, message.content)
+
+    for tweet in tweets:
+        await channel.send(tweet)
+    await channel.send("Twitter Search Finished!")
 
 @bot.event
 async def on_message(message):
