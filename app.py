@@ -54,15 +54,18 @@ async def greet_my_bot(ctx, *, arg):
     channel = ctx.message.channel
     message = ctx.message
     thinkReply = message.content.split(" ")
-    if thinkReply[0].lower() == 'hello':
-        await channel.send('Hello {}'.format(message.author.name))
+    if len(thinkReply) > 1:
+        if thinkReply[1].lower() == 'hello':
+            await channel.send('Hello {}'.format(message.author.name))
+        else:
+            await channel.send("What's up {}? How can help ya?".format(message.author.name))
     else:
-        await channel.send("What's up {}? How can help ya?".format(message.author.name))
+        await channel.send("Do you not wanna greet me? Come on! lol")
 
 @bot.command(name='twitterS')
 async def search_on_twitter(ctx, *, arg):
     channel = ctx.message.channel
-    message = message.content.split(' ')
+    message = ctx.message
     extractCountList = message.content.split(',')
     extractKeywordList = extractCountList[0].split(' ')
     tweets = []
