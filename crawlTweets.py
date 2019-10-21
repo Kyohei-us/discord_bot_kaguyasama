@@ -22,8 +22,7 @@ AT = ACCESS_TOKEN
 ATS = ACCESS_TOKEN_SECRET
 twitter = OAuth1Session(CK, CS, AT, ATS) #認証処理
 
-def letscrawl(tweets, keywordFromOutside, countPara = 5):
-    count = countPara
+def letscrawl(tweets, keywordFromOutside, count = 5):
     keyword = keywordFromOutside
 
     url = "https://api.twitter.com/1.1/search/tweets.json?q=" + keyword + "&result_type=mixed&count=10" #タイムライン取得エンドポイント
@@ -51,8 +50,7 @@ def letscrawl(tweets, keywordFromOutside, countPara = 5):
 
     return tweets
 
-def seeLists(tweets, countPara = 5):
-    count = countPara
+def seeLists(tweets, count = 5):
     url = "https://api.twitter.com/1.1/lists/statuses.json?slug=main&owner_screen_name=UniversityKenCA&count=10"
 
     params ={'count' : count} #取得数
