@@ -44,8 +44,11 @@ async def on_reaction_add(reaction, user):
 async def fetch_twitter_list(ctx, *args):
     channel = ctx.message.channel
     tweets = []
-    count = int(args[0])
-    tweets = tw.seeLists(tweets = tweets, count = count)
+    if len(args) > 0:
+        count = int(args[0])
+        tweets = tw.seeLists(tweets, count)
+    else:
+        tweets = tw.seeLists(tweets)
     for tweet in tweets:
         await channel.send(tweet)
     await channel.send("Twitter List is all!")
