@@ -44,10 +44,36 @@ async def on_reaction_add(reaction, user):
 async def fetch_twitter_list(ctx, *, arg):
     channel = ctx.message.channel
     tweets = []
-    tweets = tw.seeLists(tweets)
+    tweets = tw.seeLists(tweets, arg)
     for tweet in tweets:
         await channel.send(tweet)
     await channel.send("Twitter List is all!")
+
+@bot.command(name='greet')
+async def greet_my_bot(ctx, *, arg):
+    channel = ctx.message.channel
+    message = ctx.message
+    thinkReply = message.content.split(" ")
+    if thinkReply[0].lower() == 'hello':
+        await channel.send('Hello {}'.format(message.author.name))
+    else:
+        await channel.send("What's up {}? How can help ya?".format(message.author.name))
+
+@bot.command(name='twitterS')
+async def search_on_twitter(ctx, *, arg):
+    channel = ctx.message.channel
+    message = message.content.split(' ')
+    extractCountList = message.content.split(',')
+    extractKeywordList = extractCountList[0].split(' ')
+    tweets = []
+    if len(extractCountList) > 1:
+        tweets = tw.letscrawl(tweets, message.content, extractCountList[1])
+    else:
+        tweets = tw.letscrawl(tweets, message.content)
+
+    for tweet in tweets:
+        await channel.send(tweet)
+    await channel.send("Twitter Search Finished!")
 
 @bot.event
 async def on_message(message):
@@ -99,22 +125,6 @@ Now I'm waiting for commands.""".format(elapsed_time))
 
         #await bot.process_commands(message)
 
-    if message.content.startswith('$greet'):
-        channel = message.channel
-        thinkReply = message.content[7:]
-        if thinkReply.startswith('hello') or thinkReply.startswith('Hello'):
-            await channel.send('Hello {}'.format(message.author.name))
-        else:
-            await channel.send("What's up {}?".format(message.author.name))
-
-    if message.content.startswith("$twitterS"):
-        channel = message.channel
-        message.content = message.content[10:]
-        tweets = []
-        tweets = tw.letscrawl(tweets, message.content)
-        for tweet in tweets:
-            await channel.send(tweet)
-        await channel.send("Twitter Search Finished!")
 
 
 

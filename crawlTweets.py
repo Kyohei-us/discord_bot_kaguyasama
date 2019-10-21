@@ -34,7 +34,7 @@ def letscrawl(tweets, keywordFromOutside, countPara = 5):
     limit = res.headers['x-rate-limit-remaining']
     reset = res.headers['x-rate-limit-reset']
     sec = int(int(reset) - time.mktime(datetime.datetime.now().timetuple()))
-    tweets.append("limit is {}.\nreset is {}.\nIn second, {}".format(limit, reset, sec))
+    tweets.append("Limit is {}.\nReset is {}, or {} seconds".format(limit, reset, sec))
     print(limit + " is limit")
 
     if res.status_code == 200: #正常通信出来た場合
