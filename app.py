@@ -75,11 +75,19 @@ async def addrole(ctx):
     except Exception as e:
         print(e)
         await ctx.message.channel.send("You failed to add role im sorry.")
-    for i in ctx.message.author.roles:
-        await ctx.message.channel.send("Your roles are {}".format(i))
+    # for i in ctx.message.author.roles:
+    #     await ctx.message.channel.send("Your roles are {}".format(i))
 
-
-
+@bot.event
+async def on_member_join(member):
+    guild = member.guild
+    role = discord.utils.get(guild.roles, name="aggin")
+    try:
+        await member.add_roles(role)
+    except Exception as e:
+        print(e)
+        channel = bot.get_channel(618957085928980492)
+        await channel.send("You failed to add role im sorry.")
 
 
 @bot.command(name='twitterS')
