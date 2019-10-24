@@ -66,6 +66,15 @@ async def greet_my_bot(ctx, *, arg):
     else:
         await channel.send("Do you not wanna greet me? Come on! lol")
 
+@bot.command(name='addrole')
+async def addrole(ctx):
+    guild = ctx.message.guild
+    role = discord.utils.get(guild.roles, name="admin")
+    await bot.add_roles(ctx.message.author, role)
+
+
+
+
 @bot.command(name='twitterS')
 async def search_on_twitter(ctx, *, arg):
     channel = ctx.message.channel
