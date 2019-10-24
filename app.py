@@ -74,9 +74,9 @@ async def addrole(ctx):
         await ctx.message.author.add_roles(role)
     except Exception as e:
         print(e)
-        ctx.message.channel.send("You failed to add role im sorry.")
+        await ctx.message.channel.send("You failed to add role im sorry.")
     for i in ctx.message.author.roles:
-        ctx.message.channel.send("Your roles are {}".format(i))
+        await ctx.message.channel.send("Your roles are {}".format(i))
 
 
 
