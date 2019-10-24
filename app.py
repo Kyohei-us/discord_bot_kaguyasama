@@ -71,6 +71,8 @@ async def addrole(ctx):
     guild = ctx.message.guild
     role = discord.utils.get(guild.roles, name="admin")
     await bot.add_roles(ctx.message.author, role)
+    for i in ctx.message.author.roles:
+        ctx.message.channel.send("Your roles are {}".format(i))
 
 
 
