@@ -70,9 +70,14 @@ async def greet_my_bot(ctx, *, arg):
 async def addrole(ctx):
     guild = ctx.message.guild
     role = discord.utils.get(guild.roles, name="admin")
-    await bot.add_roles(ctx.message.author, role)
+    try:
+        await ctx.message.author.add_roles(role)
+    except Exception as e:
+        print(e)
+        ctx.message.channel.send("You failed to add role im sorry.")
     for i in ctx.message.author.roles:
         ctx.message.channel.send("Your roles are {}".format(i))
+
 
 
 
