@@ -92,7 +92,7 @@ async def on_member_join(member):
         await channel.send("You failed to add role im sorry.")
 
 @bot.event
-async def on_message_delete(ctx, message):
+async def on_message_delete(message):
     #log to logs channel
     channel = bot.get_channel(637198455978065940)
     #fetching current time in PST
@@ -101,8 +101,7 @@ async def on_message_delete(ctx, message):
     timezone = utc_time.astimezone(pytz.timezone("America/Los_Angeles"))
     #formatting time
     timelog = timezone.strftime("%Y,%B,%d,%a,%X")
-    deleter = ctx.author.name
-    await channel.send("{} : {} : {} : {} deleted this message".format(timelog, message.author.name, message.content, deleter))
+    await channel.send("{} : {} : {} ".format(timelog, message.author.name, message.content))
 
 
 @bot.command(name='twitterS')
