@@ -8,6 +8,8 @@ from test_python_scrape import ImageScraper
 import crawlTweets as tw
 from bs4 import BeautifulSoup
 import time
+import datetime
+import pytz
 
 #load_dotenv()
 #bot_token = os.getenv('BOT_TOKEN')
@@ -88,6 +90,18 @@ async def on_member_join(member):
         print(e)
         channel = bot.get_channel(618957085928980492)
         await channel.send("You failed to add role im sorry.")
+
+@bot.event
+async def on_message_delete(message):
+    #log to logs channel
+    channel = bot.get_channel(637198455978065940)
+    #fetching current time in PST
+    now = datetime.datetime.utcnow()
+    utc_time = pytz.utc.localize(now)
+    timezone = utc_time.astimezone(pytz.timezone("America/Los_Angeles"))
+    #formatting time
+    timelog = timezone.strftime("%Y,%B,%d,%a,%X")
+    await channel.send("{} : {} : {}".format(timelog, message.author.name, message.content))
 
 
 @bot.command(name='twitterS')
