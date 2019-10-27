@@ -127,10 +127,19 @@ async def search_on_twitter(ctx, *, arg):
         await channel.send(tweet)
     await channel.send("Twitter Search Finished!")
 
+@bot.event
+async def on_typing(channel, user, when):
+    now = when.utcnow()
+    utc_time = pytz.utc.localize(now)
+    timezone = utc_time.astimezone(pytz.timezone("America/Los_Angeles"))
+    #formatting time
+    timelog = timezone.strftime("%Y,%B,%d,%a,%X")
+    await channel.send("{} is typing at {}".format(user.name, timelog))
+
 
 @bot.event
 async def on_message(message):
-    if message.author.name != 'discord_bot_1':
+    if message.author.name != 'discord_bot_1' or "reaction added right now" in message.content:
         emoji = '\U0001F440'
         await message.add_reaction(emoji)
     if message.content.startswith('$scrape'):
