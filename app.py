@@ -129,7 +129,7 @@ async def search_on_twitter(ctx, *, arg):
 
 @bot.event
 async def on_message(message):
-    if message.content != "I'm ready. Please talk to me! For commands, go to how-to channel.":
+    if "I'm ready. Please talk to me! For commands, go to how-to channel." not in message.content or "This message has a reaction added right now." not in message.content:
         emoji = '\U0001F440'
         await message.add_reaction(emoji)
     if message.content.startswith('$scrape'):
