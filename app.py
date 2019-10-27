@@ -139,7 +139,7 @@ async def on_typing(channel, user, when):
 
 @bot.event
 async def on_message(message):
-    if message.author.name != 'discord_bot_1' or "reaction added right now" in message.content:
+    if message.author.name != 'discord_bot_1' or "reaction added right now" not in message.content:
         emoji = '\U0001F440'
         await message.add_reaction(emoji)
     if message.content.startswith('$scrape'):
