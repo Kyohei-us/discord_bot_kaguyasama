@@ -130,8 +130,9 @@ async def search_on_twitter(ctx, *, arg):
 
 @bot.event
 async def on_message(message):
-    emoji = '\U0001F440'
-    await message.add_reaction(emoji)
+    if message.author.name != 'discord_bot_1':
+        emoji = '\U0001F440'
+        await message.add_reaction(emoji)
     if message.content.startswith('$scrape'):
         start_time = time.time()
         channel = message.channel
