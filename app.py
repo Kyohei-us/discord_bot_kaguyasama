@@ -32,6 +32,9 @@ async def on_reaction_add(reaction, user):
     message = reaction.message
     channel = reaction.message.channel
     await channel.send(message.content + " : This message has a reaction added right now.")
+    if reaction.emoji == '\U0001F440':
+        time.sleep(3)
+        await channel.send(message.content)
 
 # @bot.event
 # async def on_raw_reaction_add(payload):
@@ -122,8 +125,11 @@ async def search_on_twitter(ctx, *, arg):
         await channel.send(tweet)
     await channel.send("Twitter Search Finished!")
 
+
 @bot.event
 async def on_message(message):
+    emoji = '\U0001F440'
+    await message.add_reaction(emoji)
     if message.content.startswith('$scrape'):
         start_time = time.time()
         channel = message.channel
