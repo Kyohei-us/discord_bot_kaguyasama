@@ -33,8 +33,9 @@ async def on_reaction_add(reaction, user):
     channel = reaction.message.channel
     await channel.send(message.content + " : This message has a reaction added right now.")
     if reaction.emoji == '\U0001F440':
-        if "I'm ready. Please talk to me! For commands, go to how-to channel." not in message.content or "This message has a reaction added right now." not in message.content:
-            time.sleep(3)
+        if "I'm ready. Please talk to me! For commands, go to how-to channel." in message.content or "This message has a reaction added right now." in message.content:
+            time.sleep(0.001)
+        else:
             await channel.send(message.content)
 
 # @bot.event
@@ -129,7 +130,9 @@ async def search_on_twitter(ctx, *, arg):
 
 @bot.event
 async def on_message(message):
-    if "I'm ready. Please talk to me! For commands, go to how-to channel." not in message.content or "This message has a reaction added right now." not in message.content:
+    if "I'm ready. Please talk to me! For commands, go to how-to channel." in message.content or "This message has a reaction added right now." in message.content:
+        time.sleep(0.001)
+    else:
         emoji = '\U0001F440'
         await message.add_reaction(emoji)
     if message.content.startswith('$scrape'):
