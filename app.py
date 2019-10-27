@@ -21,7 +21,7 @@ async def on_ready():
     print("I'm ready.")
     global target_channel
     target_channel = bot.get_channel(618957085928980492)
-    await target_channel.send("I'm ready. Please talk to me! For commands, go to how-to channel. ")
+    await target_channel.send("I'm ready. Please talk to me! For commands, go to how-to channel.")
 
 @bot.command(name='test_command')
 async def test(ctx, *, arg):
@@ -33,7 +33,7 @@ async def on_reaction_add(reaction, user):
     channel = reaction.message.channel
     await channel.send(message.content + " : This message has a reaction added right now.")
     if reaction.emoji == '\U0001F440':
-        if message.content != "I'm ready. Please talk to me! For commands, go to how-to channel. ":
+        if message.content != "I'm ready. Please talk to me! For commands, go to how-to channel.":
             time.sleep(3)
             await channel.send(message.content)
 
@@ -129,7 +129,7 @@ async def search_on_twitter(ctx, *, arg):
 
 @bot.event
 async def on_message(message):
-    if message.content != "I'm ready. Please talk to me! For commands, go to how-to channel. ":
+    if message.content != "I'm ready. Please talk to me! For commands, go to how-to channel.":
         emoji = '\U0001F440'
         await message.add_reaction(emoji)
     if message.content.startswith('$scrape'):
