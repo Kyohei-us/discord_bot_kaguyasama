@@ -96,20 +96,15 @@ async def on_message_delete(message):
     #log to logs channel
     channel = bot.get_channel(637198455978065940)
 
-    if message.content == "not delete":
-        await channel.send("I prevent the message from deleted.")
-    else:
+    name_of_channel_message_was_in = message.channel.name
 
-        name_of_channel_message_was_in = message.channel.name
-
-        #fetching current time in PST
-        now = datetime.datetime.utcnow()
-        utc_time = pytz.utc.localize(now)
-        timezone = utc_time.astimezone(pytz.timezone("America/Los_Angeles"))
-        #formatting time
-        timelog = timezone.strftime("%Y,%B,%d,%a,%X")
-        await bot.delete(message)
-        await channel.send("{} : {} : {} : This message was sent in following channel : {}".format(timelog, message.author.name, message.content, name_of_channel_message_was_in))
+    #fetching current time in PST
+    now = datetime.datetime.utcnow()
+    utc_time = pytz.utc.localize(now)
+    timezone = utc_time.astimezone(pytz.timezone("America/Los_Angeles"))
+    #formatting time
+    timelog = timezone.strftime("%Y,%B,%d,%a,%X")
+    await channel.send("{} : Sent by {} and the message deleted is : {} : This message was sent in following channel : {}".format(timelog, message.author.name, message.content, name_of_channel_message_was_in))
 
 
 @bot.command(name='twitterS')
