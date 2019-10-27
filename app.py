@@ -33,7 +33,7 @@ async def on_reaction_add(reaction, user):
     channel = reaction.message.channel
     await channel.send(message.content + " : This message has a reaction added right now.")
     if reaction.emoji == '\U0001F440':
-        if message.content != "I'm ready. Please talk to me! For commands, go to how-to channel.":
+        if message.content != "I'm ready. Please talk to me! For commands, go to how-to channel." or "This message has a reaction added right now." not in message.content:
             time.sleep(3)
             await channel.send(message.content)
 
