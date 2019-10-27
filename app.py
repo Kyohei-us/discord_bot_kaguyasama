@@ -33,7 +33,7 @@ async def on_reaction_add(reaction, user):
     channel = reaction.message.channel
     await channel.send(message.content + " : This message has a reaction added right now.")
     if reaction.emoji == '\U0001F440':
-        if user == bot:
+        if user.name == 'discord_bot_1':
             time.sleep(0.001)
         else:
             await channel.send(message.content)
