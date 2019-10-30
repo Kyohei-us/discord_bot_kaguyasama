@@ -115,11 +115,12 @@ async def on_message_delete(message):
             if str(imageIdAttached) in a.content:
                 print("This is image id : \n{} and this is a.content : \n{}".format(imageIdAttached, a.content))
                 try:
-                    a.attachments[0].url
+                    messageSplitBySpaceList = a.content.split(" ")
                 except Exception as e:
                     print(e)
                 else:
-                    await channel.send(a.attachments[0].url)
+                    print("There will be an url of Image deleted below.")
+                    await channel.send(messageSplitBySpaceList[0])
 
     #fetching current time in PST
     now = datetime.datetime.utcnow()
