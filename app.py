@@ -104,11 +104,15 @@ async def on_message_delete(message):
     name_of_channel_message_was_in = message.channel.name
 
     try:
-        imageAttached = message.attachments[0].url
+        imageIdAttached = message.attachments[0].id
     except Exception as e:
         print(e)
     else:
-        await channel.send(imageAttached)
+        imageChannel = bot.get_channel(639027961139429397)
+        messages = await imageChannel.history(limit=100).flatten()
+        for a in messages:
+            if str(imageIdAttached) in a.content:
+                await channel.send(a.attachments[0].url)
 
     #fetching current time in PST
     now = datetime.datetime.utcnow()
@@ -197,6 +201,20 @@ Now I'm waiting for commands.""".format(elapsed_time))
 
         #await bot.process_commands(message)
 
+
+    try:
+        imageURL = message.attachments[0].url
+    except Exception as e:
+        print(e)
+    else:
+        channel = bot.get_channel(639027961139429397)
+        author = message.author
+        try:
+            attachmentID = message.attachments[0].id
+        except Exception as e:
+            print(e)
+        else:
+            channel.send("{} : {} : {}".format(imageURL, author, attachmentID))
 
 
 
