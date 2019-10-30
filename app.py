@@ -214,7 +214,7 @@ Now I'm waiting for commands.""".format(elapsed_time))
         except Exception as e:
             print(e)
         else:
-            channel.send("{} : {} : {}".format(imageURL, author, attachmentID))
+            await channel.send("{} : {} : {}".format(imageURL, author, attachmentID))
 
 
 
