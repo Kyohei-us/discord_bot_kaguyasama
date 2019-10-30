@@ -163,9 +163,10 @@ async def on_message(message):
         if message.channel != bot.get_channel(639027961139429397) and message.channel  != bot.get_channel(637198455978065940):
             await message.add_reaction(emoji)
     if message.content.startswith('$testEmbed'):
-        embed = discord.Embed(title="Title",
+        embed = discord.Embed(
+            title="Title",
             description="Desc",
-            color=discord.color.blue()
+            color=discord.colour.blue()
         )
         embed.add_field(name="Field1", value="hi", inline=False)
         embed.add_field(name="Field2", value="hi2", inline=False)
