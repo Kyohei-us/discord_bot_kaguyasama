@@ -112,6 +112,7 @@ async def on_message_delete(message):
         messages = await imageChannel.history(limit=100).flatten()
         for a in messages:
             if str(imageIdAttached) in a.content:
+                print("This is image id : \n{} and this is a.content : \n{} and this is url : \n{}".format(imageIdAttached, a.content, a.attachments[0].url))
                 await channel.send(a.attachments[0].url)
 
     #fetching current time in PST
