@@ -31,7 +31,8 @@ async def test(ctx, *, arg):
 async def on_reaction_add(reaction, user):
     message = reaction.message
     channel = reaction.message.channel
-    await channel.send(message.content + " : This message has a reaction added right now.")
+    if channel != bot.get_channel(639027961139429397) and channel  != bot.get_channel(637198455978065940):
+        await channel.send(message.content + " : This message has a reaction added right now.")
     if reaction.emoji == '\U0001F440':
         if user.name == 'discord_bot_1':
             time.sleep(0.001)
@@ -112,8 +113,13 @@ async def on_message_delete(message):
         messages = await imageChannel.history(limit=100).flatten()
         for a in messages:
             if str(imageIdAttached) in a.content:
-                print("This is image id : \n{} and this is a.content : \n{} and this is url : \n{}".format(imageIdAttached, a.content, a.attachments[0].url))
-                await channel.send(a.attachments[0].url)
+                print("This is image id : \n{} and this is a.content : \n{}".format(imageIdAttached, a.content))
+                try:
+                    a.attachments[0].url
+                except Exception as e:
+                    print(e)
+                else:
+                    await channel.send(a.attachments[0].url)
 
     #fetching current time in PST
     now = datetime.datetime.utcnow()
@@ -153,7 +159,8 @@ async def on_typing(channel, user, when):
 async def on_message(message):
     if message.author.name != 'discord_bot_1' or "reaction added right now" not in message.content:
         emoji = '\U0001F440'
-        await message.add_reaction(emoji)
+        if message.channel != bot.get_channel(639027961139429397) and message.channel  != bot.get_channel(637198455978065940):
+            await message.add_reaction(emoji)
     if message.content.startswith('$scrape'):
         start_time = time.time()
         channel = message.channel
