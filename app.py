@@ -104,9 +104,10 @@ async def on_message_delete(message):
     name_of_channel_message_was_in = message.channel.name
 
     try:
-        imageAttached = message.attachment[0].url
+        imageAttached = message.attachments[0].url
     except Exception as e:
         print(e)
+    else:
         await channel.send(imageAttached)
 
     #fetching current time in PST
