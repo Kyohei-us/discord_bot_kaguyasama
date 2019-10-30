@@ -162,6 +162,14 @@ async def on_message(message):
         emoji = '\U0001F440'
         if message.channel != bot.get_channel(639027961139429397) and message.channel  != bot.get_channel(637198455978065940):
             await message.add_reaction(emoji)
+    if message.content.startswith('$testEmbed'):
+        embed = discord.Embed(title="Title",
+            description="Desc",
+            color=discord.color.blue()
+        )
+        embed.add_field(name="Field1", value="hi", inline=False)
+        embed.add_field(name="Field2", value="hi2", inline=False)
+        await message.channel.send(embed=embed)
     if message.content.startswith('$scrape'):
         start_time = time.time()
         channel = message.channel
@@ -228,5 +236,6 @@ Now I'm waiting for commands.""".format(elapsed_time))
 
 
     await bot.process_commands(message)
+
 
 bot.run(os.environ.get('BOT_TOKEN'))
