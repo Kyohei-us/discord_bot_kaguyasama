@@ -23,9 +23,9 @@ async def on_ready():
     target_channel = bot.get_channel(618957085928980492)
     await target_channel.send("I'm ready. Please talk to me! For commands, go to how-to channel.")
 
-@bot.command(name='test_command')
-async def test(ctx, *, arg):
-    await ctx.send(arg + ' : is your message')
+# @bot.command(name='test_command')
+# async def test(ctx, *, arg):
+#     await ctx.send(arg + ' : is your message')
 
 @bot.event
 async def on_reaction_add(reaction, user):
@@ -61,41 +61,41 @@ async def fetch_twitter_list(ctx, *args):
         await channel.send(tweet)
     await channel.send("Twitter List is all!")
 
-@bot.command(name='greet')
-async def greet_my_bot(ctx, *, arg):
-    channel = ctx.message.channel
-    message = ctx.message
-    thinkReply = message.content.split(" ")
-    if len(thinkReply) > 1:
-        if thinkReply[1].lower() == 'hello':
-            await channel.send('Hello {}'.format(message.author.name))
-        else:
-            await channel.send("What's up {}? How can help ya?".format(message.author.name))
-    else:
-        await channel.send("Do you not wanna greet me? Come on! lol")
+# @bot.command(name='greet')
+# async def greet_my_bot(ctx, *, arg):
+#     channel = ctx.message.channel
+#     message = ctx.message
+#     thinkReply = message.content.split(" ")
+#     if len(thinkReply) > 1:
+#         if thinkReply[1].lower() == 'hello':
+#             await channel.send('Hello {}'.format(message.author.name))
+#         else:
+#             await channel.send("What's up {}? How can help ya?".format(message.author.name))
+#     else:
+#         await channel.send("Do you not wanna greet me? Come on! lol")
 
-@bot.command(name='addrole')
-async def addrole(ctx):
-    guild = ctx.message.guild
-    role = discord.utils.get(guild.roles, name="admin")
-    try:
-        await ctx.message.author.add_roles(role)
-    except Exception as e:
-        print(e)
-        await ctx.message.channel.send("You failed to add role im sorry.")
+# @bot.command(name='addrole')
+# async def addrole(ctx):
+#     guild = ctx.message.guild
+#     role = discord.utils.get(guild.roles, name="admin")
+#     try:
+#         await ctx.message.author.add_roles(role)
+#     except Exception as e:
+#         print(e)
+#         await ctx.message.channel.send("You failed to add role im sorry.")
     # for i in ctx.message.author.roles:
     #     await ctx.message.channel.send("Your roles are {}".format(i))
 
-@bot.event
-async def on_member_join(member):
-    guild = member.guild
-    role = discord.utils.get(guild.roles, name="aggin")
-    try:
-        await member.add_roles(role)
-    except Exception as e:
-        print(e)
-        channel = bot.get_channel(618957085928980492)
-        await channel.send("You failed to add role im sorry.")
+# @bot.event
+# async def on_member_join(member):
+#     guild = member.guild
+#     role = discord.utils.get(guild.roles, name="aggin")
+#     try:
+#         await member.add_roles(role)
+#     except Exception as e:
+#         print(e)
+#         channel = bot.get_channel(618957085928980492)
+#         await channel.send("You failed to add role im sorry.")
 
 @bot.event
 async def on_message_delete(message):
@@ -166,7 +166,7 @@ async def on_message(message):
         embed = discord.Embed(
             title="Title",
             description="Desc",
-            color=discord.colour.blue()
+            color=discord.Colour.blue()
         )
         embed.add_field(name="Field1", value="hi", inline=False)
         embed.add_field(name="Field2", value="hi2", inline=False)
