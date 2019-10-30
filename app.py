@@ -103,6 +103,12 @@ async def on_message_delete(message):
 
     name_of_channel_message_was_in = message.channel.name
 
+    try:
+        imageAttached = message.attachment.url
+    except Exception as e:
+        print(e)
+        await channel.send(imageAttached)
+
     #fetching current time in PST
     now = datetime.datetime.utcnow()
     utc_time = pytz.utc.localize(now)
