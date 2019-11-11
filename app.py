@@ -144,10 +144,10 @@ async def role(ctx):
     guild = ctx.message.guild
 
     for member in guild.members:
-        role_group_games = discord.utils.get(guild.roles, id=643278745674842140)
+        role_group_games = discord.utils.get(guild.roles, id=643279746360279050)
         if role_group_games not in member.roles:
             await member.add_roles(role_group_games)
-            role_group_gaming_platform = discord.utils.get(guild.roles, id=643278858212081684)
+            role_group_gaming_platform = discord.utils.get(guild.roles, id=643279795895140353)
             if role_group_gaming_platform not in member.roles:
                 await member.add_roles(role_group_gaming_platform)
                 channel = ctx.message.channel
