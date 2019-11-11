@@ -46,7 +46,7 @@ def letscrawl(tweets, keywordFromOutside, count = 5):
             #print(line['created_at'])
             #print('*******************************************')
     else: #正常通信出来なかった場合
-        print("Failed: %d" % res.status_code)
+        print("Failed: {}".format(res.status_code))
 
     return tweets
 

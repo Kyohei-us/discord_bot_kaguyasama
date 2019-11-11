@@ -139,6 +139,20 @@ async def on_message_delete(message):
 
     await channel.send(embed=embed)
 
+@bot.command(name='roleAdjustment')
+async def role(ctx):
+    guild = ctx.message.guild
+
+    for member in guild.members:
+        role_group_games = discord.utils.get(guild.roles, id=643278745674842140)
+        if role_group_games not in member.roles:
+            await member.add_roles(role_group_games)
+            role_group_gaming_platform = discord.utils.get(guild.roles, id=643278858212081684)
+            if role_group_gaming_platform not in member.roles:
+                await member.add_roles(role_group_gaming_platform)
+                channel = ctx.message.channel
+                await channel.send("{} finished his/her role adjustment.".format(member.name))
+
 
 @bot.command(name='twitterS')
 async def search_on_twitter(ctx, *, arg):
