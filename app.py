@@ -156,13 +156,12 @@ async def role(ctx):
             if role == role_group_games:
                 continue
             role_group_gaming_platform = discord.utils.get(guild.roles, id=643279795895140353)
-            for role in member.roles:
-                if role != role_group_gaming_platform:
-                    await channel.send("adding role.")
-                    await member.add_roles(role_group_gaming_platform)
-                    await channel.send('added role')
-                if role == role_group_gaming_platform:
-                    continue
+            if role != role_group_gaming_platform:
+                await channel.send("adding role.")
+                await member.add_roles(role_group_gaming_platform)
+                await channel.send('added role')
+            if role == role_group_gaming_platform:
+                continue
         await channel.send("{} finished his/her role adjustment.".format(member.name))
 
 
