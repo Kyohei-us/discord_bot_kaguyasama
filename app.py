@@ -148,15 +148,22 @@ async def role(ctx):
         await channel.send("retrieving role.")
         role_group_games = discord.utils.get(guild.roles, id=643279746360279050)
         await channel.send("retrieved role.")
-        if role_group_games not in member.roles:
-            await channel.send("adding role.")
-            await member.add_roles(role_group_games)
-            await channel.send('added role')
+        for role in member.roles:
+            if role != role_group_games:
+                await channel.send("adding role.")
+                await member.add_roles(role_group_games)
+                await channel.send('added role')
+            if role == role_group_games:
+                continue
             role_group_gaming_platform = discord.utils.get(guild.roles, id=643279795895140353)
-            if role_group_gaming_platform not in member.roles:
-                await member.add_roles(role_group_gaming_platform)
-                channel = ctx.message.channel
-                await channel.send("{} finished his/her role adjustment.".format(member.name))
+            for role in member.roles:
+                if role != role_group_gaming_platform:
+                    await channel.send("adding role.")
+                    await member.add_roles(role_group_gaming_platform)
+                    await channel.send('added role')
+                if role == role_group_gaming_platform:
+                    continue
+        await channel.send("{} finished his/her role adjustment.".format(member.name))
 
 
 @bot.command(name='twitterS')
