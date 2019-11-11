@@ -142,11 +142,16 @@ async def on_message_delete(message):
 @bot.command(name='roleAdjustment')
 async def role(ctx):
     guild = ctx.message.guild
+    channel = ctx.message.channel
 
     for member in guild.members:
+        await channel.send("retrieving role.")
         role_group_games = discord.utils.get(guild.roles, id=643279746360279050)
+        await channel.send("retrieved role.")
         if role_group_games not in member.roles:
+            await channel.send("adding role.")
             await member.add_roles(role_group_games)
+            await channel.send('added role')
             role_group_gaming_platform = discord.utils.get(guild.roles, id=643279795895140353)
             if role_group_gaming_platform not in member.roles:
                 await member.add_roles(role_group_gaming_platform)
