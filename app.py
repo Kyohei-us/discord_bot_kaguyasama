@@ -146,7 +146,7 @@ async def role(ctx):
 
     for member in guild.members:
         await channel.send("retrieving role.")
-        role_group_games = discord.utils.get(guild.roles, id=643279746360279050)
+        role_group_games = discord.utils.get(guild.roles, id=622296223772180480)
         await channel.send("retrieved role.")
         for role in member.roles:
             if role != role_group_games:
