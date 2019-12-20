@@ -264,4 +264,4 @@ Now I'm waiting for commands.""".format(elapsed_time))
     await bot.process_commands(message)
 
 
-bot.run("NjE4OTU0MzUzNzQyNDQ2NjAy.Xfwurg.yJV5Lhj8xkfOa49QqapNjKHOpbc")#os.environ.get('BOT_TOKEN'))
+bot.run(os.environ.get('BOT_TOKEN'))
